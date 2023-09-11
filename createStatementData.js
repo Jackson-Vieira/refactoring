@@ -14,11 +14,9 @@ export default function createStatementData(invoice, plays) {
       result.credits = volumeCreditsFor(result);
       return result;
     }
-  
     function playFor(aPerformance) {
       return plays[aPerformance.playID];
     }
-  
     function amountFor(aPerformance) {
       let result = 0;
       switch (aPerformance.play.type) {
@@ -41,7 +39,6 @@ export default function createStatementData(invoice, plays) {
   
       return result;
     }
-  
     function volumeCreditsFor(aPerformance) {
       let result = 0;
       result += Math.max(aPerformance.audience - 30, 0);
@@ -49,11 +46,9 @@ export default function createStatementData(invoice, plays) {
       if ("comedy" === aPerformance.play.type) result += Math.floor(aPerformance.audience / 5);
       return result;
     }
-  
     function totalAmount(data) {
       return data.performances.reduce((total, p) => total + p.amount, 0);
     }
-  
     function totalVolumeCredits(data) {
       return data.performances.reduce((total, p) => total + p.credits, 0) 
     }
